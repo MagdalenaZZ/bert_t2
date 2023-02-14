@@ -25,10 +25,13 @@ import modeling
 import optimization
 import tokenization
 import tensorflow as tf
+import tensorflow.compat.v1 as tf   # new
+tf.compat.v1.disable_v2_behavior()  # new
 
 flags = tf.flags
 
-FLAGS = flags.FLAGS
+#FLAGS = flags.FLAGS
+FLAGS = tf.app.flags.FLAGS
 
 ## Required parameters
 flags.DEFINE_string(
