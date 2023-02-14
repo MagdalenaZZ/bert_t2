@@ -358,11 +358,12 @@ def dropout(input_tensor, dropout_prob):
   output = tf.nn.dropout(input_tensor, rate=1 - (1.0 - dropout_prob))
   return output
 
+'''
 #def layer_norm(input_tensor, name=None):
 #  """Run layer normalization on the last dimension of the tensor."""
 #  return tf.contrib.layers.layer_norm(
 #      inputs=input_tensor, begin_norm_axis=-1, begin_params_axis=-1, scope=name)
-
+'''
 
 def layer_norm(input_tensor, name=None):  # new
   """Run layer normalization on the last dimension of the tensor."""  # new
