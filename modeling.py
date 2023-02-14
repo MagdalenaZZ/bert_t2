@@ -360,14 +360,13 @@ def dropout(input_tensor, dropout_prob):
 
 '''
 #def layer_norm(input_tensor, name=None):
-#  return tf.contrib.layers.layer_norm(
-#      inputs=input_tensor, begin_norm_axis=-1, begin_params_axis=-1, scope=name)
+#  return tf.contrib.layers.layer_norm(inputs=input_tensor, begin_norm_axis=-1, begin_params_axis=-1, scope=name)
 '''
 
 def layer_norm(input_tensor, name=None):  # new
   """Run layer normalization on the last dimension of the tensor.""" 
-  layer_norma = tf.keras.layers.LayerNormalization(axis = -1)  # new
-  return layer_norma(input_tensor)  # new
+  layer_norm = tf.keras.layers.LayerNormalization(axis = -1)  # new
+  return layer_norm(input_tensor)  # new
 
 
 def layer_norm_and_dropout(input_tensor, dropout_prob, name=None):
