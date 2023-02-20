@@ -462,10 +462,13 @@ def convert_single_example(ex_index, example, label_list, max_seq_length,
   #label_id = label_map[example.label]
 
   try:
-    label_id = float(example.label)
+    label_id = label_map[example.label]
   except:
-    print(example.label)
+    print('Example_label', example.label)
     label_id='0'
+    # Convert labels into one-hot encoding
+    one_hot_labels = tf.one_hot(example.label, depth=num_labels, dtype=tf.float32)
+    label_id = label_map[example.label] 
 
   
   if ex_index < 5:
