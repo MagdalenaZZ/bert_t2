@@ -461,12 +461,11 @@ def convert_single_example(ex_index, example, label_list, max_seq_length,
   
   #label_id = label_map[example.label]
 
-  if output_mode == 'classification':
-    label_id = label_map[example.label]
-  elif output_mode == 'regression':
+  try:
     label_id = float(example.label)
-  else:
-    raise KeyError(mode)
+  except:
+    print(example.label)
+    label_id=float(1)
 
   
   if ex_index < 5:
