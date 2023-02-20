@@ -458,8 +458,17 @@ def convert_single_example(ex_index, example, label_list, max_seq_length,
   assert len(input_ids) == max_seq_length
   assert len(input_mask) == max_seq_length
   assert len(segment_ids) == max_seq_length
+  
+  #label_id = label_map[example.label]
 
-  label_id = label_map[example.label]
+  if output_mode == 'classification':
+    label_id = label_map[example.label]
+  elif output_mode == 'regression':
+    label_id = float(example.label)
+  else:
+    raise KeyError(mode)
+
+  
   if ex_index < 5:
     tf.compat.v1.logging.info("*** Example ***")
     tf.compat.v1.logging.info("guid: %s" % (example.guid))
