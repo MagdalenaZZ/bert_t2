@@ -252,7 +252,9 @@ class XnliProcessor(DataProcessor):
 
   def get_labels(self):
     """See base class."""
+    #return ["0", "1", "2", "3"]
     return ["contradiction", "entailment", "neutral"]
+
 
 
 class MnliProcessor(DataProcessor):
@@ -356,7 +358,8 @@ class ColaProcessor(DataProcessor):
 
   def get_labels(self):
     """See base class."""
-    return ["0", "1"]
+    return ["0", "1", "2", "3"] # https://medium.com/@javedqadruddin/it-looks-like-youre-getting-this-error-because-you-have-more-than-2-different-classes-that-you-re-3672230e48cb
+    #return ["0", "1"]
 
   def _create_examples(self, lines, set_type):
     """Creates examples for the training and dev sets."""
@@ -829,6 +832,7 @@ def main(_):
   processor = processors[task_name]()
 
   label_list = processor.get_labels()
+  print('Label_list', label_list)
 
   tokenizer = tokenization.FullTokenizer(
       vocab_file=FLAGS.vocab_file, do_lower_case=FLAGS.do_lower_case)
