@@ -465,7 +465,7 @@ def convert_single_example(ex_index, example, label_list, max_seq_length,
     label_id = float(example.label)
   except:
     print(example.label)
-    label_id=float(1)
+    label_id='0'
 
   
   if ex_index < 5:
